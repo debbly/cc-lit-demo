@@ -45,7 +45,7 @@ function PostBtn({
   const encryptWithLit = async (data: any) => {
     const client = new LitJsSdk.LitNodeClient();
     await client.connect();
-    const chain = "bnbtestnet";
+    const chain = "bscTestnet";
 
     const accessControlConditions = [
       {
@@ -108,6 +108,19 @@ function PostBtn({
         chain: "bscTestnet",
         returnValueTest: {
           key: "",
+          comparator: "=",
+          value: "true",
+        },
+      },
+      { operator: "or" },
+      // Lit Actions -> basic check like the weather or a web2 endpoint
+      {
+        contractAddress: "ipfs://QmcgbVu2sJSPpTeFhBd174FnmYmoVYvUFJeDkS7eYtwoFY",
+        standardContractType: "LitAction",
+        chain: "ethereum",
+        method: "go",
+        parameters: ["40"],
+        returnValueTest: {
           comparator: "=",
           value: "true",
         },
